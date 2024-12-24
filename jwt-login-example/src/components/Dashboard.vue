@@ -34,7 +34,6 @@
       apiClient
         .get('/test') // API 호출
         .then((response) => {
-          console.log(response.data);
           this.message = response.data; // 응답 데이터를 message에 저장
         })
         .catch((error) => {
