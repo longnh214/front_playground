@@ -8,25 +8,21 @@
 
   <script type="text/babel">
     const root = document.getElementById("root");
-    let counter = 0;
-    function countUp() {
-      counter++;
-      render();
-    }
-
-    function render() {
-      ReactDOM.render(<App />, root);
-    }
 
     function App() {
+      const [counter, setCounter] = React.useState(0); //counter = 0으로 초기값 세팅
+      const onClick = () => {
+        setCounter(counter + 1);
+      };
+
       return (
         <div id="root">
           <h3>Total clicks : {counter}</h3>
-          <button onClick={countUp}>Click me</button>
+          <button onClick={onClick}>Click me</button>
         </div>
       );
     }
 
-    render();
+    ReactDOM.render(<App />, root);
   </script>
 </html>
