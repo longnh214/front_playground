@@ -7,23 +7,43 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <script type="text/babel">
-    const root = document.getElementById("root");
-
     function App() {
-      const [counter, setCounter] = React.useState(0); //counter = 0으로 초기값 세팅
-      const onClick = () => {
-        // setCounter(counter + 1);
-        setCounter((current) => current + 1);
+      const [minutes, setMinutes] = React.useState();
+      const onChange = (event) => {
+        setMinutes(event.target?.value);
       };
+
+      const [hours, setHours] = React.useState();
+      React.useEffect(() => {
+        if (minutes >= 60) {
+          setHours(minutes / 60);
+        }
+      }, [minutes]);
 
       return (
         <div id="root">
-          <h3>Total clicks : {counter}</h3>
-          <button onClick={onClick}>Click me</button>
+          <h1 className="hi">Super Converter</h1>
+          <label htmlFor="minutes">Minutes</label>
+          <input
+            id="minutes"
+            value={minutes}
+            placeholder="Minutes"
+            type="number"
+            onChange={onChange}
+          />
+          <h4>You want to convert {minutes}</h4>
+          <label htmlFor="hours">Hours</label>
+          <input
+            value={hours}
+            id="hours"
+            placeholder="Hours"
+            readOnly
+            type="number"
+          />
         </div>
       );
     }
-
+    const root = document.getElementById("root");
     ReactDOM.render(<App />, root);
   </script>
 </html>
