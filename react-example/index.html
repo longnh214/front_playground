@@ -15,10 +15,15 @@
 
       const [hours, setHours] = React.useState();
       React.useEffect(() => {
-        if (minutes >= 60) {
+        if (minutes) {
           setHours(minutes / 60);
         }
       }, [minutes]);
+
+      const reset = () => {
+        setMinutes(0);
+        setHours(0);
+      };
 
       return (
         <div id="root">
@@ -40,6 +45,7 @@
             readOnly
             type="number"
           />
+          <button onClick={reset}>Reset</button>
         </div>
       );
     }
