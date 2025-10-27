@@ -16,6 +16,8 @@
       const [hours, setHours] = React.useState();
       React.useEffect(() => {
         if (minutes) {
+          setMinutes(minutes.replace(/^0+(?=\d)/, ""));
+
           setHours(minutes / 60);
         }
       }, [minutes]);
@@ -36,7 +38,7 @@
             type="number"
             onChange={onChange}
           />
-          <h4>You want to convert {minutes}</h4>
+          <h4>You want to convert {minutes} minutes to hours</h4>
           <label htmlFor="hours">Hours</label>
           <input
             value={hours}
