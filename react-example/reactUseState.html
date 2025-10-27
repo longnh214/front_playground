@@ -1,0 +1,33 @@
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    function App() {
+      const [counter, setCounter] = React.useState(0); //counter = 0으로 초기값 세팅
+      const onClick = () => {
+        // setCounter(counter + 1);
+        setCounter((current) => current + 1);
+      };
+      const reset = () => {
+        setCounter((current) => 0);
+      };
+
+      return (
+        <div id="root">
+          <h3>Total clicks : {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+          <button onClick={reset}>Reset</button>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
